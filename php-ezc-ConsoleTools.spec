@@ -4,7 +4,7 @@
 Summary:	%{pearname} - A set of classes to do different actions with the console (also called shell)
 Name:		php-ezc-ConsoleTools
 Version:	1.6.1
-Release:	0.1
+Release:	1
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
@@ -31,6 +31,11 @@ In PEAR status of this package is: %{status}.
 %prep
 %pear_package_setup
 
+install -d examples
+mv docs/ConsoleTools/docs/img examples
+mv docs/ConsoleTools/docs/example* examples
+mv docs/ConsoleTools/docs/tutorial* examples
+
 %build
 packagexml2cl package.xml > ChangeLog
 
@@ -38,6 +43,9 @@ packagexml2cl package.xml > ChangeLog
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
 %pear_package_install
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # don't care for tests
 rm -rf $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{pearname}
@@ -48,8 +56,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog install.log
-%doc docs/ConsoleTools/*
+%doc docs/ConsoleTools/docs/*
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %{php_pear_dir}/ezc/autoload/console_autoload.php
 %{php_pear_dir}/ezc/ConsoleTools
 %{php_pear_dir}/data/ConsoleTools
+
+%{_examplesdir}/%{name}-%{version}
