@@ -1,20 +1,23 @@
-%include	/usr/lib/rpm/macros.php
 %define		status		stable
 %define		pearname	ConsoleTools
+%define		php_min_version 5.0.0
+%include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - A set of classes to do different actions with the console (also called shell)
 Name:		php-ezc-ConsoleTools
 Version:	1.6.1
-Release:	1
+Release:	2
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
 # Source0-md5:	987783f590fc3a75fbf3c2e19818b2a4
 URL:		http://components.ez.no/package/ConsoleTools/
 BuildRequires:	php-channel(components.ez.no)
-BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR >= 1:1.4.2
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.571
+Requires:	php(core) >= %{php_min_version}
+Requires:	php(iconv)
+Requires:	php(pcre)
 Requires:	php-channel(components.ez.no)
 Requires:	php-ezc-Base >= 1.8
 Requires:	php-pear
@@ -35,9 +38,7 @@ install -d examples
 mv docs/ConsoleTools/docs/img examples
 mv docs/ConsoleTools/docs/example* examples
 mv docs/ConsoleTools/docs/tutorial* examples
-
-%build
-packagexml2cl package.xml > ChangeLog
+mv docs/ConsoleTools/docs/* .
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -55,11 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog install.log
-%doc docs/ConsoleTools/docs/*
+%doc CREDITS LICENSE install.log
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %{php_pear_dir}/ezc/autoload/console_autoload.php
 %{php_pear_dir}/ezc/ConsoleTools
 %{php_pear_dir}/data/ConsoleTools
-
 %{_examplesdir}/%{name}-%{version}
