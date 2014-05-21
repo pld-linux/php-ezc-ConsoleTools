@@ -5,7 +5,7 @@
 Summary:	%{pearname} - A set of classes to do different actions with the console (also called shell)
 Name:		php-ezc-ConsoleTools
 Version:	1.6.1
-Release:	2
+Release:	3
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
@@ -40,6 +40,9 @@ mv docs/ConsoleTools/docs/example* examples
 mv docs/ConsoleTools/docs/tutorial* examples
 mv docs/ConsoleTools/docs/* .
 
+# design docs
+mv .%{php_pear_dir}/data/ConsoleTools/design .
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
@@ -56,9 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CREDITS LICENSE install.log
+%doc CREDITS LICENSE install.log design
 %{php_pear_dir}/.registry/.channel.*/*.reg
 %{php_pear_dir}/ezc/autoload/console_autoload.php
 %{php_pear_dir}/ezc/ConsoleTools
-%{php_pear_dir}/data/ConsoleTools
 %{_examplesdir}/%{name}-%{version}
