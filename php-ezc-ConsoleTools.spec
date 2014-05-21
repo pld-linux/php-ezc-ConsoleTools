@@ -10,7 +10,7 @@ License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
 # Source0-md5:	987783f590fc3a75fbf3c2e19818b2a4
-URL:		http://components.ez.no/package/ConsoleTools/
+URL:		http://ezcomponents.org/
 BuildRequires:	php-channel(components.ez.no)
 BuildRequires:	php-pear-PEAR >= 1:1.4.2
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
