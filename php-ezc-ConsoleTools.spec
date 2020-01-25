@@ -1,7 +1,6 @@
 %define		status		stable
 %define		pearname	ConsoleTools
 %define		php_min_version 5.0.0
-%include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - A set of classes to do different actions with the console (also called shell)
 Name:		php-ezc-ConsoleTools
 Version:	1.6.1
