@@ -4,7 +4,7 @@
 Summary:	%{pearname} - A set of classes to do different actions with the console (also called shell)
 Name:		php-ezc-ConsoleTools
 Version:	1.6.1
-Release:	4
+Release:	5
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://components.ez.no/get/%{pearname}-%{version}.tgz
